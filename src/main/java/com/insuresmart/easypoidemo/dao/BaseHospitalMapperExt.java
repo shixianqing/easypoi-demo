@@ -3,7 +3,7 @@ package com.insuresmart.easypoidemo.dao;
 import com.insuresmart.easypoidemo.model.BaseHospital;
 import com.insuresmart.easypoidemo.dao.base.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
-import java.util.List
+import java.util.List;
 
 
 /**
@@ -14,5 +14,7 @@ import java.util.List
 public interface BaseHospitalMapperExt extends BaseMapper<BaseHospital> {
 
     List<BaseHospital> pageQuery(BaseHospital record);
+
+    List<BaseHospital> selectAllHospital();
 
 }
