@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.insuresmart.easypoidemo.dao.BaseHospitalMapperExt">
+  <resultMap id="BaseResultMap" type="com.insuresmart.easypoidemo.model.BaseHospital">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="hospital_code" jdbcType="VARCHAR" property="hospitalCode" />
+    <result column="hospital_name" jdbcType="VARCHAR" property="hospitalName" />
+    <result column="hospital_grade" jdbcType="INTEGER" property="hospitalGrade" />
+    <result column="hospital_subgrade" jdbcType="INTEGER" property="hospitalSubgrade" />
+    <result column="hospital_type" jdbcType="INTEGER" property="hospitalType" />
+    <result column="hospital_profession" jdbcType="INTEGER" property="hospitalProfession" />
+    <result column="region_id" jdbcType="INTEGER" property="regionId" />
+    <result column="province_id" jdbcType="INTEGER" property="provinceId" />
+    <result column="province_name" jdbcType="VARCHAR" property="provinceName" />
+    <result column="city_name" jdbcType="VARCHAR" property="cityName" />
+    <result column="is_valid" jdbcType="INTEGER" property="isValid" />
+    <result column="medicare_type" jdbcType="INTEGER" property="medicareType" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="hospital_category" jdbcType="CHAR" property="hospitalCategory" />
+    <result column="hospital_category_name" jdbcType="VARCHAR" property="hospitalCategoryName" />
+    <result column="hospital_address" jdbcType="VARCHAR" property="hospitalAddress" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_operator" jdbcType="INTEGER" property="createOperator" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_operator" jdbcType="INTEGER" property="updateOperator" />
+    <result column="create_operator_name" jdbcType="VARCHAR" property="createOperatorName" />
+    <result column="update_operator_name" jdbcType="VARCHAR" property="updateOperatorName" />
+  </resultMap>
+  <insert id="insert" parameterType="com.insuresmart.easypoidemo.model.BaseHospital">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into base_hospital (hospital_code, hospital_name, hospital_grade, 
+      hospital_subgrade, hospital_type, hospital_profession, 
+      region_id, province_id, province_name, 
+      city_name, is_valid, medicare_type, 
+      remark, hospital_category, hospital_category_name, 
+      hospital_address, create_time, create_operator, 
+      update_time, update_operator, create_operator_name, 
+      update_operator_name)
+    values (#{hospitalCode,jdbcType=VARCHAR}, #{hospitalName,jdbcType=VARCHAR}, #{hospitalGrade,jdbcType=INTEGER}, 
+      #{hospitalSubgrade,jdbcType=INTEGER}, #{hospitalType,jdbcType=INTEGER}, #{hospitalProfession,jdbcType=INTEGER}, 
+      #{regionId,jdbcType=INTEGER}, #{provinceId,jdbcType=INTEGER}, #{provinceName,jdbcType=VARCHAR}, 
+      #{cityName,jdbcType=VARCHAR}, #{isValid,jdbcType=INTEGER}, #{medicareType,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{hospitalCategory,jdbcType=CHAR}, #{hospitalCategoryName,jdbcType=VARCHAR}, 
+      #{hospitalAddress,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createOperator,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateOperator,jdbcType=INTEGER}, #{createOperatorName,jdbcType=VARCHAR}, 
+      #{updateOperatorName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.insuresmart.easypoidemo.model.BaseHospital">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into base_hospital
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="hospitalCode != null">
+        hospital_code,
+      </if>
+      <if test="hospitalName != null">
+        hospital_name,
+      </if>
+      <if test="hospitalGrade != null">
+        hospital_grade,
+      </if>
+      <if test="hospitalSubgrade != null">
+        hospital_subgrade,
+      </if>
+      <if test="hospitalType != null">
+        hospital_type,
+      </if>
+      <if test="hospitalProfession != null">
+        hospital_profession,
+      </if>
+      <if test="regionId != null">
+        region_id,
+      </if>
+      <if test="provinceId != null">
+        province_id,
+      </if>
+      <if test="provinceName != null">
+        province_name,
+      </if>
+      <if test="cityName != null">
+        city_name,
+      </if>
+      <if test="isValid != null">
+        is_valid,
+      </if>
+      <if test="medicareType != null">
+        medicare_type,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="hospitalCategory != null">
+        hospital_category,
+      </if>
+      <if test="hospitalCategoryName != null">
+        hospital_category_name,
+      </if>
+      <if test="hospitalAddress != null">
+        hospital_address,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createOperator != null">
+        create_operator,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updateOperator != null">
+        update_operator,
+      </if>
+      <if test="createOperatorName != null">
+        create_operator_name,
+      </if>
+      <if test="updateOperatorName != null">
+        update_operator_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="hospitalCode != null">
+        #{hospitalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalName != null">
+        #{hospitalName,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalGrade != null">
+        #{hospitalGrade,jdbcType=INTEGER},
+      </if>
+      <if test="hospitalSubgrade != null">
+        #{hospitalSubgrade,jdbcType=INTEGER},
+      </if>
+      <if test="hospitalType != null">
+        #{hospitalType,jdbcType=INTEGER},
+      </if>
+      <if test="hospitalProfession != null">
+        #{hospitalProfession,jdbcType=INTEGER},
+      </if>
+      <if test="regionId != null">
+        #{regionId,jdbcType=INTEGER},
+      </if>
+      <if test="provinceId != null">
+        #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="provinceName != null">
+        #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null">
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="isValid != null">
+        #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="medicareType != null">
+        #{medicareType,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalCategory != null">
+        #{hospitalCategory,jdbcType=CHAR},
+      </if>
+      <if test="hospitalCategoryName != null">
+        #{hospitalCategoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalAddress != null">
+        #{hospitalAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createOperator != null">
+        #{createOperator,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateOperator != null">
+        #{updateOperator,jdbcType=INTEGER},
+      </if>
+      <if test="createOperatorName != null">
+        #{createOperatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateOperatorName != null">
+        #{updateOperatorName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
