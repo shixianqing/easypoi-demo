@@ -4,6 +4,24 @@
 
     <!--          自动生成扩展XML create by shixianqing on 2019/6/27                 -->
 
+    <sql id="dynamicQuery">
 
+    </sql>
 
+    <select id="selectAllHospital" resultMap="BaseResultMap">
+        select hospital_code,hospital_name,hospital_grade,hospital_subgrade,hospital_type,
+              hospital_profession,province_name,city_name,medicare_type,hospital_category
+        from
+          base_hospital
+    </select>
+
+    <select id="pageQuery" parameterType="com.insuresmart.easypoidemo.dto.HospitalDto" resultMap="BaseResultMap">
+        select hospital_code,hospital_name,hospital_grade,hospital_subgrade,hospital_type,
+              hospital_profession,province_name,city_name,medicare_type,hospital_category
+        from
+          base_hospital
+        <where>
+            <include refid="dynamicQuery"/>
+        </where>
+    </select>
 </mapper>

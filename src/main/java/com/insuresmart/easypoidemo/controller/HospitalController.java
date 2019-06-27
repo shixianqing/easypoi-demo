@@ -9,10 +9,13 @@ import com.insuresmart.easypoidemo.dao.BaseHospitalMapperExt;
 import com.insuresmart.easypoidemo.dto.HospitalDto;
 import com.insuresmart.easypoidemo.excel.BaseHospitalExcel;
 import com.insuresmart.easypoidemo.model.BaseHospital;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,6 +30,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/hospital")
 @Slf4j
+@Api(tags = "医院控制")
 public class HospitalController {
 
     @Autowired
@@ -36,6 +40,8 @@ public class HospitalController {
      * excel导出浏览器
      * @param response
      */
+    @GetMapping("/export")
+    @ApiOperation(value = "导出")
     public void export(HttpServletResponse response){
         HospitalDto hospitalDto = HospitalDto.builder().build();
         ExcelBoot.ExportBuilder(response,"医院.xlsx", BaseHospitalExcel.class,
