@@ -1,6 +1,4 @@
-package com.insuresmart.easypoidemo.dao.base;
-
-import java.util.List;
+package com.insuresmart.easypoidemo.mapper.base;
 
 public interface BaseMapper<D> {
 

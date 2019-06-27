@@ -1,7 +1,7 @@
-package com.insuresmart.easypoidemo.dao;
+package com.insuresmart.easypoidemo.mapper;
 
 import com.insuresmart.easypoidemo.model.BaseHospital;
-import com.insuresmart.easypoidemo.dao.base.BaseMapper;
+import com.insuresmart.easypoidemo.mapper.base.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 

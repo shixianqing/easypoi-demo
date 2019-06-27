@@ -30,7 +30,7 @@ public class MybatisGenerator {
     /**
      * mapper文件存放包名
      */
-    private static String mapperPack = "com.insuresmart.easypoidemo.dao";
+    private static String mapperPack = "com.insuresmart.easypoidemo.mapper";
 
     /**
      * mapper文件存放路径，是相对路径，完整路径是拼接的，这里只需要把项目名
