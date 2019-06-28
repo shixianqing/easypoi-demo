@@ -140,6 +140,9 @@ public interface HospitalEnum {
         }
 
         public static String getCodeByName(Integer code){
+            if (code == null){
+                return "";
+            }
             String nature = null;
             if (code.equals(PUBLIC.code)){
                 nature = PUBLIC.name;

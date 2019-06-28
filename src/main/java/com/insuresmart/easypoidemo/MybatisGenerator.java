@@ -46,7 +46,7 @@ public class MybatisGenerator {
     /**
      * 数据库名
      */
-    private static String DATABASE = "tpa";
+    private static String DATABASE = "claim_standard";
 
     /**
      * 需要生成的数据表前缀
@@ -56,7 +56,7 @@ public class MybatisGenerator {
     /**
      * 指定需要生成的某个表auth_role，与TABLE_PREFIX二选一
      */
-    private static String TABLE_NAME = "base_hospital";
+    private static String TABLE_NAME = "test_user";
 
     /**
      * 创建人
@@ -75,7 +75,7 @@ public class MybatisGenerator {
 
     static {
         //TODO ..
-        LAST_INSERT_ID_TABLES.put("base_hospital", "id");
+        LAST_INSERT_ID_TABLES.put("test_user", "id");
     }
 
     /**

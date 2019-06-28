@@ -1,6 +1,7 @@
 package com.insuresmart.easypoidemo.excel;
 
 import com.excel.poi.annotation.ExportField;
+import com.excel.poi.annotation.ImportField;
 import lombok.*;
 
 import java.io.Serializable;
@@ -23,12 +24,14 @@ public class BaseHospitalExcel implements Serializable {
      * @mbg.generated
      */
     @ExportField(columnName = "医院码")
+    @ImportField(required = true)
     private String hospitalCode;
 
     /**
      * 医院名称
      */
     @ExportField(columnName = "医院名称")
+    @ImportField(required = true)
     private String hospitalName;
 
     /**
@@ -37,6 +40,7 @@ public class BaseHospitalExcel implements Serializable {
      * @mbg.generated
      */
     @ExportField(columnName = "医院等级")
+    @ImportField
     private String hospitalGrade;
 
     /**
@@ -45,6 +49,7 @@ public class BaseHospitalExcel implements Serializable {
      * @mbg.generated
      */
     @ExportField(columnName = "医院次等级")
+    @ImportField
     private String hospitalSubgrade;
 
     /**
@@ -53,6 +58,7 @@ public class BaseHospitalExcel implements Serializable {
      * @mbg.generated
      */
     @ExportField(columnName = "医院性质")
+    @ImportField
     private String hospitalType;
 
     /**
@@ -61,6 +67,7 @@ public class BaseHospitalExcel implements Serializable {
      * @mbg.generated
      */
     @ExportField(columnName = "专业类型")
+    @ImportField
     private String hospitalProfession;
 
     /**
@@ -71,6 +78,7 @@ public class BaseHospitalExcel implements Serializable {
      * @mbg.generated
      */
     @ExportField(columnName = "省份名称")
+    @ImportField
     private String provinceName;
 
     /**
@@ -79,6 +87,7 @@ public class BaseHospitalExcel implements Serializable {
      * @mbg.generated
      */
     @ExportField(columnName = "地区名称")
+    @ImportField
     private String cityName;
 
 
@@ -88,6 +97,7 @@ public class BaseHospitalExcel implements Serializable {
      * @mbg.generated
      */
     @ExportField(columnName = "是否医保")
+    @ImportField
     private String medicareType;
 
 
@@ -97,6 +107,7 @@ public class BaseHospitalExcel implements Serializable {
      * @mbg.generated
      */
     @ExportField(columnName = "医院类型")
+    @ImportField
     private String hospitalCategory;
 
 
