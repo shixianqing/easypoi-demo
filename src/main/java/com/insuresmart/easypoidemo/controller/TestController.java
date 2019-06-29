@@ -53,7 +53,7 @@ public class TestController {
      * @param response
      */
     @GetMapping("/export")
-    @ApiOperation(value = "导出")
+    @ApiOperation(value = "导出到浏览器")
     public void export(HttpServletResponse response){
         HospitalDto hospitalDto = HospitalDto.builder().build();
         ExcelBoot.ExportBuilder(response,"医院", BaseHospitalExcel.class,
@@ -90,6 +90,7 @@ public class TestController {
      * @throws FileNotFoundException
      */
     @GetMapping(value = "/exportToFtp")
+    @ApiOperation(value = "导出文件到指定目录下")
     public void exportToFtp() throws FileNotFoundException {
 
         FileOutputStream fos = new FileOutputStream("f:/医院.xlsx");
@@ -117,6 +118,7 @@ public class TestController {
      * 导出模板到浏览器下载
      */
      @GetMapping("/export/template")
+     @ApiOperation(value = "模板下载")
      public void exportTemplate(HttpServletResponse response){
 
          ExcelBoot.ExportBuilder(response,"用户",TestUserExcel.class)
@@ -124,6 +126,7 @@ public class TestController {
      }
 
      @PostMapping("/import")
+     @ApiOperation(value = "导入")
      public void fileImport(MultipartFile file) throws IOException {
         ExcelBoot.ImportBuilder(file.getInputStream(),TestUserExcel.class)
                 .importExcel(new ImportFunction<TestUserExcel>() {
