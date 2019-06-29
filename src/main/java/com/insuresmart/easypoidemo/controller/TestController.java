@@ -39,7 +39,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/hospital")
 @Slf4j
-@Api(tags = "医院控制")
+@Api(tags = "easy-poi|测试")
 public class TestController {
 
     @Autowired
