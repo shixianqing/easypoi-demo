@@ -38,9 +38,9 @@
             <property name="suppressAllComments" value="true" />
             <property name="suppressDate" value="true"/>
             <property name="author" value="shixianqing"/>
-            <property name="ctime" value="2019/6/27"/>
+            <property name="ctime" value="2019/6/29"/>
             <property name="generateExt" value="true"/>
-            <property name="mapperPack" value="com.insuresmart.easypoidemo.dao"/>
+            <property name="mapperPack" value="com.insuresmart.easypoidemo.mapper"/>
 
         </commentGenerator>
 
@@ -53,20 +53,20 @@
                         password="ljbin123!" />
 
         <!-- model生成 -->
-        <javaModelGenerator targetPackage="com.insuresmart.easypoidemo.model" targetProject="F:/opensource/easypoi-demo/src/main/java" >
+        <javaModelGenerator targetPackage="com.insuresmart.easypoidemo.model" targetProject="G:/gitproject/easypoi-demo/src/main/java" >
             <!-- 生成的JavaModel 继承类-->
             
 
         </javaModelGenerator>
 
         <!-- MapperXML生成 -->
-        <sqlMapGenerator targetPackage="mapper" targetProject="F:/opensource/easypoi-demo/src/main/resources/" >
+        <sqlMapGenerator targetPackage="mapper" targetProject="G:/gitproject/easypoi-demo/src/main/resources/" >
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!-- Mapper接口生成 -->
         <!-- 需要映射的表 -->
-                                    <table tableName="base_hospital" domainObjectName="BaseHospital" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+                                    <table tableName="bill" domainObjectName="Bill" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                        enableSelectByExample="false" selectByExampleQueryId="false" >
                     <generatedKey column="id" sqlStatement="MySql" identity="true"/>
                 </table>

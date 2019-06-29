@@ -16,9 +16,15 @@ public class MybatisGenerator {
 
     //Model + ModelExample 存放的路径和包名
     /**
-     * model存放路径，是相对路径，完整路径是拼接的，这里只需要把项目名
+     * 项目名
      */
-    private static String targetProjectDao = "easypoi-demo";
+    private static String targetProject = "easypoi-demo";
+
+    private static String controllerPack = "com.insuresmart.easypoidemo.controller";
+
+    private static String servicePack = "com.insuresmart.easypoidemo.service";
+
+    private static String serviceImplPack = "com.insuresmart.easypoidemo.service.impl";
 
     /**
      * model存放路径
@@ -32,10 +38,6 @@ public class MybatisGenerator {
      */
     private static String mapperPack = "com.insuresmart.easypoidemo.mapper";
 
-    /**
-     * mapper文件存放路径，是相对路径，完整路径是拼接的，这里只需要把项目名
-     */
-    private static String targetProjectSql = "easypoi-demo";
 
     /**
      * mapperxml存放路径，resources下
@@ -46,7 +48,7 @@ public class MybatisGenerator {
     /**
      * 数据库名
      */
-    private static String DATABASE = "claim_standard";
+    private static String DATABASE = "tpa";
 
     /**
      * 需要生成的数据表前缀
@@ -56,7 +58,7 @@ public class MybatisGenerator {
     /**
      * 指定需要生成的某个表auth_role，与TABLE_PREFIX二选一
      */
-    private static String TABLE_NAME = "test_user";
+    private static String TABLE_NAME = "bill";
 
     /**
      * 创建人
@@ -75,7 +77,7 @@ public class MybatisGenerator {
 
     static {
         //TODO ..
-        LAST_INSERT_ID_TABLES.put("test_user", "id");
+        LAST_INSERT_ID_TABLES.put("bill", "id");
     }
 
     /**
@@ -87,10 +89,9 @@ public class MybatisGenerator {
 
         MybatisGeneratorUtil.generator(
                 null,
-                //是否生成Facade 层
-                false,
-                targetProjectDao, targetProjectSql
-                , modelPack, mapperPack, sqlmapperPack,
+                targetProject,
+                modelPack, mapperPack, sqlmapperPack,
+                controllerPack,servicePack,serviceImplPack,
                 JDBC_DRIVER, JDBC_URL, JDBC_USERNAME, JDBC_PASSWORD,
                 DATABASE, TABLE_PREFIX, TABLE_NAME,LAST_INSERT_ID_TABLES, author
         );

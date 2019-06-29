@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
-//@EnableSwagger2
+@EnableSwagger2
 public class EasypoiDemoApplication {
 
     public static void main(String[] args) {
@@ -27,15 +27,15 @@ public class EasypoiDemoApplication {
     @Bean
     public Docket createRestApi(){
 
-        ParameterBuilder tokenPar = new ParameterBuilder();
-        List<Parameter> pars = new ArrayList<Parameter>();
-        pars.add(tokenPar.build());
+//        ParameterBuilder tokenPar = new ParameterBuilder();
+//        List<Parameter> pars = new ArrayList<Parameter>();
+//        pars.add(tokenPar.build());
 
         return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).
-                select().apis(RequestHandlerSelectors.any())
+                select().apis(RequestHandlerSelectors.basePackage("com.insuresmart.easypoidemo.controller"))
                 .paths(PathSelectors.any())
-                .build()
-                .globalOperationParameters(pars);
+                .build();
+//                .globalOperationParameters(pars);
     }
 
     @Bean
