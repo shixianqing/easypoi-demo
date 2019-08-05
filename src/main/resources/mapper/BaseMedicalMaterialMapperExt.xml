@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.insuresmart.easypoidemo.mapper.BaseMedicalMaterialMapperExt">
+
+    <!--          自动生成扩展XML create by shixianqing on 2019/8/2                 -->
+
+    <sql id="queryDynamic">
+        is_valid = 1
+        <if test="materialName != null and materialName !=''">
+            and material_name like concat('%',#{materialName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="materialFeeType != null">
+            and material_fee_type = #{materialFeeType,jdbcType=CHAR}
+        </if>
+    </sql>
+
+   <!-- <resultMap id="BaseVoResultMap" type="com.insuresmart.claimtrial.knowledge.vo.MedicalMaterialVo" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="material_code" property="materialCode" jdbcType="VARCHAR" />
+        <result column="material_name" property="materialName" jdbcType="VARCHAR" />
+        <result column="material_use" property="materialUse" jdbcType="VARCHAR" />
+        <result column="material_fee_type" property="materialFeeType" jdbcType="CHAR" />
+        <result column="material_fee_type_name" property="materialFeeTypeName" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="create_operator" property="createOperator" jdbcType="INTEGER" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+        <result column="update_operator" property="updateOperator" jdbcType="INTEGER" />
+        <result column="subcategory_desc" property="subcategoryDesc" jdbcType="VARCHAR" />
+        <result column="material_class1" property="materialClass1" jdbcType="VARCHAR" />
+        <result column="material_class2" property="materialClass2" jdbcType="VARCHAR" />
+        <result column="material_class3" property="materialClass3" jdbcType="VARCHAR" />
+        <result column="material_class4" property="materialClass4" jdbcType="VARCHAR" />
+        <result column="sub_item_name" property="subItemName" jdbcType="VARCHAR" />
+        <result column="detail_item_name" property="detailItemName" jdbcType="VARCHAR" />
+        <result column="service_type_code" property="serviceTypeCode" jdbcType="VARCHAR" />
+        <result column="material_match_id" property="materialMatchId" jdbcType="VARCHAR" />
+    </resultMap>
+-->
+    <!--删除材料-->
+    <delete id="deleteMedicalMaterial" parameterType="com.insuresmart.easypoidemo.excel.BaseMedicalMaterial">
+
+        update
+           base_medical_material
+        set
+           is_valid = #{isValid,jdbcType=INTEGER},
+           update_time = #{updateTime,jdbcType=TIMESTAMP},
+           update_operator = #{updateOperator,jdbcType=INTEGER},
+           update_operator_name = #{updateOperatorName,jdbcType=VARCHAR}
+        where
+           id = #{id,jdbcType=INTEGER}
+           and is_valid = 1
+  </delete>
+
+  <select id="pageQuery" parameterType="com.insuresmart.easypoidemo.excel.BaseMedicalMaterial"
+            resultMap="BaseResultMap">
+
+    select
+      <include refid="Base_Column_List" />
+    from
+    base_medical_material
+    where
+    <include refid="queryDynamic" />
+    ORDER BY update_time DESC,create_time DESC
+  </select>
+
+    <select id="selectByName" parameterType="com.insuresmart.easypoidemo.excel.BaseMedicalMaterial" resultMap="BaseResultMap">
+
+    select
+      id, material_code, material_name, material_use, material_fee_type
+    from
+      base_medical_material
+    where
+        material_name = #{materialName,jdbcType=VARCHAR}  and is_valid = 1
+        <if test="prodAddr !=null and prodAddr !=''">
+            and prod_addr = #{prodAddr,jdbcType=VARCHAR}
+        </if>
+  </select>
+
+    <select id="selectCountByName" parameterType="string" resultType="int">
+        select
+          count(id)
+        from
+           base_medical_material
+        where
+          material_name = #{name,jdbcType=VARCHAR}  and is_valid = 1
+    </select>
+
+    <!--获取最大code-->
+    <select id="getMaxCode" resultType="string">
+        select
+          max(material_code)
+        from
+           base_medical_material
+        where
+           is_valid = 1
+    </select>
+
+    <select id="selectNotNull" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from
+        base_medical_material_copy
+        where
+        material_match_id is not null
+    </select>
+</mapper>

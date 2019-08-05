@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.insuresmart.easypoidemo.mapper.BaseTreatmentMapperExt">
+
+    <!--          自动生成扩展XML create by shixianqing on 2019/8/2                 -->
+
+    <!--获取最大code-->
+    <select id="getMaxCode" resultType="string">
+        select
+          max(treatment_code)
+        from
+           base_treatment
+    </select>
+
+    <select id="selectByName" parameterType="com.insuresmart.easypoidemo.excel.BaseTreatment" resultMap="BaseResultMap">
+    select
+      id,treatment_code,treatment_name,treatment_sub_term,treatment_application_site,treatment_connotation,treatment_fee_type
+    from
+      base_treatment t
+    where
+      treatment_name = #{treatmentName,jdbcType=VARCHAR} and is_valid = 1
+      <if test="prodAddr !=null and prodAddr !=''">
+        and prod_addr = #{prodAddr,jdbcType=VARCHAR}
+      </if>
+  </select>
+    
+    <update id="logicalDeleteById" parameterType="com.insuresmart.easypoidemo.excel.BaseTreatment">
+        update
+          base_treatment
+        set
+            <if test="isValid != null">
+                is_valid = #{isValid,jdbcType=INTEGER},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateOperator != null">
+                update_operator = #{updateOperator,jdbcType=INTEGER},
+            </if>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="pageQuery" parameterType="com.insuresmart.easypoidemo.excel.BaseTreatment" resultMap="BaseResultMap">
+        select
+          <include refid="Base_Column_List" />
+        from base_treatment
+        where
+        is_valid = 1
+        <if test="treatmentFeeType != null">
+           and treatment_fee_type = #{treatmentFeeType,jdbcType=CHAR}
+        </if>
+        <if test="treatmentName != null">
+            and treatment_name like concat('%',#{treatmentName,jdbcType=VARCHAR},'%')
+        </if>
+    </select>
+    <select id="selectNotNull" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from
+        base_treatment_copy
+        where
+        treatment_match_id is not null and is_valid = 1
+    </select>
+</mapper>

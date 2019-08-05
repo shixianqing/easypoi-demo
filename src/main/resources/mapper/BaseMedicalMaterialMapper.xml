@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.insuresmart.easypoidemo.mapper.BaseMedicalMaterialMapperExt">
+  <resultMap id="BaseResultMap" type="com.insuresmart.easypoidemo.excel.BaseMedicalMaterial">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="material_code" jdbcType="VARCHAR" property="materialCode" />
+    <result column="material_name" jdbcType="VARCHAR" property="materialName" />
+    <result column="material_use" jdbcType="VARCHAR" property="materialUse" />
+    <result column="material_fee_type" jdbcType="CHAR" property="materialFeeType" />
+    <result column="material_fee_type_name" jdbcType="VARCHAR" property="materialFeeTypeName" />
+    <result column="effective_date" jdbcType="TIMESTAMP" property="effectiveDate" />
+    <result column="is_valid" jdbcType="INTEGER" property="isValid" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_operator" jdbcType="INTEGER" property="createOperator" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_operator" jdbcType="INTEGER" property="updateOperator" />
+    <result column="subcategory_no" jdbcType="VARCHAR" property="subcategoryNo" />
+    <result column="subcategory_desc" jdbcType="VARCHAR" property="subcategoryDesc" />
+    <result column="old_code" jdbcType="VARCHAR" property="oldCode" />
+    <result column="material_class1" jdbcType="VARCHAR" property="materialClass1" />
+    <result column="material_class2" jdbcType="VARCHAR" property="materialClass2" />
+    <result column="material_class3" jdbcType="VARCHAR" property="materialClass3" />
+    <result column="material_class4" jdbcType="VARCHAR" property="materialClass4" />
+    <result column="sub_item_code" jdbcType="VARCHAR" property="subItemCode" />
+    <result column="sub_item_name" jdbcType="VARCHAR" property="subItemName" />
+    <result column="detail_item_code" jdbcType="VARCHAR" property="detailItemCode" />
+    <result column="detail_item_name" jdbcType="VARCHAR" property="detailItemName" />
+    <result column="service_type_code" jdbcType="VARCHAR" property="serviceTypeCode" />
+    <result column="material_match_id" jdbcType="VARCHAR" property="materialMatchId" />
+    <result column="prod_addr" jdbcType="VARCHAR" property="prodAddr" />
+    <result column="create_operator_name" jdbcType="VARCHAR" property="createOperatorName" />
+    <result column="update_operator_name" jdbcType="VARCHAR" property="updateOperatorName" />
+    <result column="version" jdbcType="VARCHAR" property="version" />
+    <result column="sub_version" jdbcType="DECIMAL" property="subVersion" />
+    <result column="version_date" jdbcType="TIMESTAMP" property="versionDate" />
+    <result column="origin_type" jdbcType="VARCHAR" property="originType" />
+    <result column="origin_type_value" jdbcType="VARCHAR" property="originTypeValue" />
+    <result column="confident_level" jdbcType="DECIMAL" property="confidentLevel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, material_code, material_name, material_use, material_fee_type, material_fee_type_name, 
+    effective_date, is_valid, create_time, create_operator, update_time, update_operator, 
+    subcategory_no, subcategory_desc, old_code, material_class1, material_class2, material_class3, 
+    material_class4, sub_item_code, sub_item_name, detail_item_code, detail_item_name, 
+    service_type_code, material_match_id, prod_addr, create_operator_name, update_operator_name, 
+    version, sub_version, version_date, origin_type, origin_type_value, confident_level
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from base_medical_material
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from base_medical_material
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.insuresmart.easypoidemo.excel.BaseMedicalMaterial">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into base_medical_material (material_code, material_name, material_use, 
+      material_fee_type, material_fee_type_name, effective_date, 
+      is_valid, create_time, create_operator, 
+      update_time, update_operator, subcategory_no, 
+      subcategory_desc, old_code, material_class1, 
+      material_class2, material_class3, material_class4, 
+      sub_item_code, sub_item_name, detail_item_code, 
+      detail_item_name, service_type_code, material_match_id, 
+      prod_addr, create_operator_name, update_operator_name, 
+      version, sub_version, version_date, 
+      origin_type, origin_type_value, confident_level
+      )
+    values (#{materialCode,jdbcType=VARCHAR}, #{materialName,jdbcType=VARCHAR}, #{materialUse,jdbcType=VARCHAR}, 
+      #{materialFeeType,jdbcType=CHAR}, #{materialFeeTypeName,jdbcType=VARCHAR}, #{effectiveDate,jdbcType=TIMESTAMP}, 
+      #{isValid,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{createOperator,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateOperator,jdbcType=INTEGER}, #{subcategoryNo,jdbcType=VARCHAR}, 
+      #{subcategoryDesc,jdbcType=VARCHAR}, #{oldCode,jdbcType=VARCHAR}, #{materialClass1,jdbcType=VARCHAR}, 
+      #{materialClass2,jdbcType=VARCHAR}, #{materialClass3,jdbcType=VARCHAR}, #{materialClass4,jdbcType=VARCHAR}, 
+      #{subItemCode,jdbcType=VARCHAR}, #{subItemName,jdbcType=VARCHAR}, #{detailItemCode,jdbcType=VARCHAR}, 
+      #{detailItemName,jdbcType=VARCHAR}, #{serviceTypeCode,jdbcType=VARCHAR}, #{materialMatchId,jdbcType=VARCHAR}, 
+      #{prodAddr,jdbcType=VARCHAR}, #{createOperatorName,jdbcType=VARCHAR}, #{updateOperatorName,jdbcType=VARCHAR}, 
+      #{version,jdbcType=VARCHAR}, #{subVersion,jdbcType=DECIMAL}, #{versionDate,jdbcType=TIMESTAMP}, 
+      #{originType,jdbcType=VARCHAR}, #{originTypeValue,jdbcType=VARCHAR}, #{confidentLevel,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.insuresmart.easypoidemo.excel.BaseMedicalMaterial">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into base_medical_material
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="materialCode != null">
+        material_code,
+      </if>
+      <if test="materialName != null">
+        material_name,
+      </if>
+      <if test="materialUse != null">
+        material_use,
+      </if>
+      <if test="materialFeeType != null">
+        material_fee_type,
+      </if>
+      <if test="materialFeeTypeName != null">
+        material_fee_type_name,
+      </if>
+      <if test="effectiveDate != null">
+        effective_date,
+      </if>
+      <if test="isValid != null">
+        is_valid,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createOperator != null">
+        create_operator,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updateOperator != null">
+        update_operator,
+      </if>
+      <if test="subcategoryNo != null">
+        subcategory_no,
+      </if>
+      <if test="subcategoryDesc != null">
+        subcategory_desc,
+      </if>
+      <if test="oldCode != null">
+        old_code,
+      </if>
+      <if test="materialClass1 != null">
+        material_class1,
+      </if>
+      <if test="materialClass2 != null">
+        material_class2,
+      </if>
+      <if test="materialClass3 != null">
+        material_class3,
+      </if>
+      <if test="materialClass4 != null">
+        material_class4,
+      </if>
+      <if test="subItemCode != null">
+        sub_item_code,
+      </if>
+      <if test="subItemName != null">
+        sub_item_name,
+      </if>
+      <if test="detailItemCode != null">
+        detail_item_code,
+      </if>
+      <if test="detailItemName != null">
+        detail_item_name,
+      </if>
+      <if test="serviceTypeCode != null">
+        service_type_code,
+      </if>
+      <if test="materialMatchId != null">
+        material_match_id,
+      </if>
+      <if test="prodAddr != null">
+        prod_addr,
+      </if>
+      <if test="createOperatorName != null">
+        create_operator_name,
+      </if>
+      <if test="updateOperatorName != null">
+        update_operator_name,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="subVersion != null">
+        sub_version,
+      </if>
+      <if test="versionDate != null">
+        version_date,
+      </if>
+      <if test="originType != null">
+        origin_type,
+      </if>
+      <if test="originTypeValue != null">
+        origin_type_value,
+      </if>
+      <if test="confidentLevel != null">
+        confident_level,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="materialCode != null">
+        #{materialCode,jdbcType=VARCHAR},
+      </if>
+      <if test="materialName != null">
+        #{materialName,jdbcType=VARCHAR},
+      </if>
+      <if test="materialUse != null">
+        #{materialUse,jdbcType=VARCHAR},
+      </if>
+      <if test="materialFeeType != null">
+        #{materialFeeType,jdbcType=CHAR},
+      </if>
+      <if test="materialFeeTypeName != null">
+        #{materialFeeTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="effectiveDate != null">
+        #{effectiveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isValid != null">
+        #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createOperator != null">
+        #{createOperator,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateOperator != null">
+        #{updateOperator,jdbcType=INTEGER},
+      </if>
+      <if test="subcategoryNo != null">
+        #{subcategoryNo,jdbcType=VARCHAR},
+      </if>
+      <if test="subcategoryDesc != null">
+        #{subcategoryDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="oldCode != null">
+        #{oldCode,jdbcType=VARCHAR},
+      </if>
+      <if test="materialClass1 != null">
+        #{materialClass1,jdbcType=VARCHAR},
+      </if>
+      <if test="materialClass2 != null">
+        #{materialClass2,jdbcType=VARCHAR},
+      </if>
+      <if test="materialClass3 != null">
+        #{materialClass3,jdbcType=VARCHAR},
+      </if>
+      <if test="materialClass4 != null">
+        #{materialClass4,jdbcType=VARCHAR},
+      </if>
+      <if test="subItemCode != null">
+        #{subItemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="subItemName != null">
+        #{subItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="detailItemCode != null">
+        #{detailItemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="detailItemName != null">
+        #{detailItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceTypeCode != null">
+        #{serviceTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="materialMatchId != null">
+        #{materialMatchId,jdbcType=VARCHAR},
+      </if>
+      <if test="prodAddr != null">
+        #{prodAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="createOperatorName != null">
+        #{createOperatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateOperatorName != null">
+        #{updateOperatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="subVersion != null">
+        #{subVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="versionDate != null">
+        #{versionDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="originType != null">
+        #{originType,jdbcType=VARCHAR},
+      </if>
+      <if test="originTypeValue != null">
+        #{originTypeValue,jdbcType=VARCHAR},
+      </if>
+      <if test="confidentLevel != null">
+        #{confidentLevel,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.insuresmart.easypoidemo.excel.BaseMedicalMaterial">
+    update base_medical_material
+    <set>
+      <if test="materialCode != null">
+        material_code = #{materialCode,jdbcType=VARCHAR},
+      </if>
+      <if test="materialName != null">
+        material_name = #{materialName,jdbcType=VARCHAR},
+      </if>
+      <if test="materialUse != null">
+        material_use = #{materialUse,jdbcType=VARCHAR},
+      </if>
+      <if test="materialFeeType != null">
+        material_fee_type = #{materialFeeType,jdbcType=CHAR},
+      </if>
+      <if test="materialFeeTypeName != null">
+        material_fee_type_name = #{materialFeeTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="effectiveDate != null">
+        effective_date = #{effectiveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isValid != null">
+        is_valid = #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createOperator != null">
+        create_operator = #{createOperator,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateOperator != null">
+        update_operator = #{updateOperator,jdbcType=INTEGER},
+      </if>
+      <if test="subcategoryNo != null">
+        subcategory_no = #{subcategoryNo,jdbcType=VARCHAR},
+      </if>
+      <if test="subcategoryDesc != null">
+        subcategory_desc = #{subcategoryDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="oldCode != null">
+        old_code = #{oldCode,jdbcType=VARCHAR},
+      </if>
+      <if test="materialClass1 != null">
+        material_class1 = #{materialClass1,jdbcType=VARCHAR},
+      </if>
+      <if test="materialClass2 != null">
+        material_class2 = #{materialClass2,jdbcType=VARCHAR},
+      </if>
+      <if test="materialClass3 != null">
+        material_class3 = #{materialClass3,jdbcType=VARCHAR},
+      </if>
+      <if test="materialClass4 != null">
+        material_class4 = #{materialClass4,jdbcType=VARCHAR},
+      </if>
+      <if test="subItemCode != null">
+        sub_item_code = #{subItemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="subItemName != null">
+        sub_item_name = #{subItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="detailItemCode != null">
+        detail_item_code = #{detailItemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="detailItemName != null">
+        detail_item_name = #{detailItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceTypeCode != null">
+        service_type_code = #{serviceTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="materialMatchId != null">
+        material_match_id = #{materialMatchId,jdbcType=VARCHAR},
+      </if>
+      <if test="prodAddr != null">
+        prod_addr = #{prodAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="createOperatorName != null">
+        create_operator_name = #{createOperatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateOperatorName != null">
+        update_operator_name = #{updateOperatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="subVersion != null">
+        sub_version = #{subVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="versionDate != null">
+        version_date = #{versionDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="originType != null">
+        origin_type = #{originType,jdbcType=VARCHAR},
+      </if>
+      <if test="originTypeValue != null">
+        origin_type_value = #{originTypeValue,jdbcType=VARCHAR},
+      </if>
+      <if test="confidentLevel != null">
+        confident_level = #{confidentLevel,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.insuresmart.easypoidemo.excel.BaseMedicalMaterial">
+    update base_medical_material
+    set material_code = #{materialCode,jdbcType=VARCHAR},
+      material_name = #{materialName,jdbcType=VARCHAR},
+      material_use = #{materialUse,jdbcType=VARCHAR},
+      material_fee_type = #{materialFeeType,jdbcType=CHAR},
+      material_fee_type_name = #{materialFeeTypeName,jdbcType=VARCHAR},
+      effective_date = #{effectiveDate,jdbcType=TIMESTAMP},
+      is_valid = #{isValid,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_operator = #{createOperator,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_operator = #{updateOperator,jdbcType=INTEGER},
+      subcategory_no = #{subcategoryNo,jdbcType=VARCHAR},
+      subcategory_desc = #{subcategoryDesc,jdbcType=VARCHAR},
+      old_code = #{oldCode,jdbcType=VARCHAR},
+      material_class1 = #{materialClass1,jdbcType=VARCHAR},
+      material_class2 = #{materialClass2,jdbcType=VARCHAR},
+      material_class3 = #{materialClass3,jdbcType=VARCHAR},
+      material_class4 = #{materialClass4,jdbcType=VARCHAR},
+      sub_item_code = #{subItemCode,jdbcType=VARCHAR},
+      sub_item_name = #{subItemName,jdbcType=VARCHAR},
+      detail_item_code = #{detailItemCode,jdbcType=VARCHAR},
+      detail_item_name = #{detailItemName,jdbcType=VARCHAR},
+      service_type_code = #{serviceTypeCode,jdbcType=VARCHAR},
+      material_match_id = #{materialMatchId,jdbcType=VARCHAR},
+      prod_addr = #{prodAddr,jdbcType=VARCHAR},
+      create_operator_name = #{createOperatorName,jdbcType=VARCHAR},
+      update_operator_name = #{updateOperatorName,jdbcType=VARCHAR},
+      version = #{version,jdbcType=VARCHAR},
+      sub_version = #{subVersion,jdbcType=DECIMAL},
+      version_date = #{versionDate,jdbcType=TIMESTAMP},
+      origin_type = #{originType,jdbcType=VARCHAR},
+      origin_type_value = #{originTypeValue,jdbcType=VARCHAR},
+      confident_level = #{confidentLevel,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
